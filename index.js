@@ -451,3 +451,355 @@
 // let curry = multiplplyMasala(3);
 // console.log(curry(2));
 //Mentos Jindegi
+//=======================================================================================================================
+// console.log("12-07-2023");
+// (function () {
+//   var a = (b = 3);
+// })();
+
+// console.log("a defined? " + (typeof a !== "undefined"));
+// console.log("b defined? " + (typeof b !== "undefined"));
+//   a defined? false
+//   b defined? true
+// function Help(Sejal, sanga) {
+//   console.log("Hello please Help in script.js " + " " + Sejal);
+//   sanga();
+// }
+// function sanga() {
+//   console.log("Main hun dont worry , I will help ypu ");
+// }
+// Help("Sejal ", sanga);
+// function add(a, b) {
+//   return a * b;
+// }
+// add(3, 4);
+
+// function getdata() {
+//   url = "https://jsonplaceholder.typicode.com/todos/1";
+//   fetch(url)
+//     .then((responce) => {
+//       return responce.text();
+//     })
+//     .then((data) => {
+//       console.log(data);
+//     });
+// }
+// getdata();
+
+// let promise = fetch("https://jsonplaceholder.typicode.com/todos/1");
+// promise
+//   .then((value1) => {
+//     return value1.json();
+//   })
+//   .then((value2) => {
+//     console.log(value2);
+//   });
+// Call back hell =>.......>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+function getCheese(callback) {
+    setTimeout(() => {
+        const cheese = "🧀";
+        console.log("here is cheese", cheese);
+        callback(cheese);
+    }, 2000);
+}
+
+function makeDough(cheese, callback) {
+    setTimeout(() => {
+        const dough = cheese + "🫓";
+        console.log("here is the dough", dough);
+        callback(dough);
+    }, 2000);
+}
+
+function bakePizza(dough, callback) {
+    setTimeout(() => {
+        const pizza = dough + "🍕";
+        console.log("here is the pizza", pizza);
+        callback(pizza);
+    }, 2000);
+}
+
+getCheese((cheese) => {
+    makeDough(cheese, (dough) => {
+        bakePizza(dough, (pizza) => {
+            console.log("got my pizza", pizza);
+        });
+    });
+});
+//============Clouser --.>>>>>>>>>>>>>>>>>>>>>>>>
+function createTaxCalculator(percentage){
+     let a = 10;
+     let b = 20;
+    return function(salary){
+        return(salary*percentage)/100;
+    }
+}
+
+let newCountry = createTaxCalculator(10);
+newCountry(10000)
+//---===>>>>>>>Fetch Api
+function getData() {
+  const url = "https://jsonplaceholder.typicode.com/todos/1";
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.text();
+    })
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.log('Error:', error);
+    });
+}
+
+getData();
+//=================================Hoisting
+// console.log(x);
+// var x = 10;
+
+//=============
+// foo();
+
+// function foo() {
+//   console.log('Hello, hoisting!');
+// }
+//==============
+// function foo() {
+//   console.log('Hello, hoisting!');
+// }
+
+// foo();
+
+//Practicer===>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//There is a ca . Jo ki bar bar calculate karke iritate ho raha hai
+// function calculateTax(salary,percentage){
+//     return (salary*percentage)/100;
+// }
+// calculateTax(20000,20);
+//Older way
+//====================
+//Higher Order Function 
+// function createTaxCalculator(percentage){
+//     return function(salary){
+//         return(salary*percentage)/100;
+//     }
+// }
+// let tax10 = createTaxCalculator(10);
+// tax10(30000);
+//Function returning a new Function
+//New Way
+//===================
+//**********************Clouser******************
+// let a =10;
+// function test (){
+//     let b =20;
+//     console.log(a);
+//     console.log(b);
+// }
+// test()
+// console.log(a);
+// console.log(b);
+//=====================================
+// function createTaxCalculator(percentage){
+//     return function(salary){
+//         return(salary*percentage)/100;
+//     }
+// }
+// let newCountry = createTaxCalculator(20);
+// newCountry(10000)
+//============================
+//Promises with callback funcction
+// console.log("Hey, can you get the tacos?");
+
+// const promise = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     const isTacosAvailable = false;
+//     if (isTacosAvailable) {
+//       resolve();
+//     } else {
+//       reject();
+//     }
+//   }, 5000);
+// });
+
+// setTimeout(() => {
+//   console.log("In the meantime, I will make soup");
+// }, 2000);
+
+// const handlePromiseResult = (resolvedValue) => {
+//   console.log(resolvedValue);
+//   console.log("I will set up the table now");
+// };
+
+// const handlePromiseError = (rejectedValue) => {
+//   console.log(rejectedValue);
+//   console.log("I will prepare pasta now");
+// };
+
+// promise.then(handlePromiseResult).catch(handlePromiseError);
+//===============================================================
+//Pure Function 
+// let a =  "Meri Cheez"
+// function test(){
+//     console.log('Lots Of thing')
+//     a = "Jao Bhad Mai";
+// }
+// test();
+//Koi Devloper Ake mera sudh function ko asudh kar gaya .
+//================================================================
+//Another Promise . here I use finally method
+// const ticket = new Promise(function (resolve, reject) {
+//     const isBoarded = false;
+//     if (isBoarded) {
+//         resolve("You are in the Flight");
+//     } else {
+//         reject("Your flight has been cancelled");
+//     }
+// });
+
+// ticket
+//     .then((data) => {
+//         console.log("wohoo", data);
+//     })
+//     .catch((data) => {
+//         console.log("oh no", data);
+//     })
+//     .finally(() => {
+//         console.log("I will always be executed");
+//     });
+//==============Promise chaining========================
+// function getCheese() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             const cheese = "🧀";
+//             resolve(cheese);
+//         }, 2000);
+//     });
+// }
+
+// function makeDough(cheese) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             const dough = cheese + "🫓";
+//              resolve(dough);
+//            // reject("Bad cheese");
+//         }, 2000);
+//     });
+// }
+
+// function bakePizza(dough) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             const pizza = dough + "🍕";
+//             resolve(pizza);
+//         }, 2000);
+//     });
+// }
+// getCheese()
+//     .then((cheese) => {
+//         console.log("here is the cheese", cheese);
+//         return makeDough(cheese);
+//     })
+//     .then((dough) => {
+//         console.log("here is the dough", dough);
+//         return bakePizza(dough);
+//     })
+//     .then((pizza) => {
+//         console.log("here is the pizza", pizza);
+//     })
+//     .catch((data) => {
+//         console.log("error occured", data);
+//     })
+//     .finally(() => {
+//         console.log("Process ended");
+//     });
+//=====================Promises With Async and await=====================
+// function getCheese() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             const cheese = "🧀";
+//             resolve(cheese);
+//         }, 2000);
+//     });
+// }
+
+// function makeDough(cheese) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             const dough = cheese + "🫓";
+//              resolve(dough);
+//            // reject("Bad cheese");
+//         }, 2000);
+//     });
+// }
+
+// function bakePizza(dough) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             const pizza = dough + "🍕";
+//             resolve(pizza);
+//         }, 2000);
+//     });
+// }
+// async function orderPizza() {
+   
+//         const cheese = await getCheese();
+//         console.log("here is the cheese", cheese);
+
+//         const dough = await makeDough(cheese);
+//         console.log("here is the dough", dough);
+
+//         const pizza = await bakePizza(dough);
+//         console.log("here is the pizza", pizza);
+// }
+
+//orderPizza();
+//==================Promises To handel error with try catch====================
+// function getCheese() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             const cheese = "🧀";
+//             resolve(cheese);
+//         }, 2000);
+//     });
+// }
+
+// function makeDough(cheese) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             const dough = cheese + "🫓";
+//           //  resolve(dough);
+//             reject("Bad cheese");
+//         }, 2000);
+//     });
+// }
+
+// function bakePizza(dough) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             const pizza = dough + "🍕";
+//             resolve(pizza);
+//         }, 2000);
+//     });
+// }
+
+// async function orderPizza() {
+//     try {
+//         const cheese = await getCheese();
+//         console.log("here is the cheese", cheese);
+
+//         const dough = await makeDough(cheese);
+//         console.log("here is the dough", dough);
+
+//         const pizza = await bakePizza(dough);
+//         console.log("here is the pizza", pizza);
+//     } catch (err) {
+//         console.log("error occured", err);
+//     }
+//     console.log("Process ended");
+// }
+
+// orderPizza();
